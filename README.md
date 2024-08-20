@@ -3,7 +3,14 @@
 Laravel Zero 提供了类似 Laravel 的框架，但是用于 CLI 工具的开发。这里试用 Laravel Zero 写一个 LLM（Large Language Model）的
 CLI 工具，用于调用豆包的大模型。
 
-## 使用
+- 支持兼容 OpenAI API 的大模型
+- 支持流式输出
+- 支持打包成可执行文件
+- 输出样式较丰富
+
+## 试玩 `ssh llm@xuchunyang.cn`
+
+![llm](./screenshot.png)
 
 ```bash
 ➜  ~ ssh llm@xuchunyang.cn
