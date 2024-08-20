@@ -38,6 +38,16 @@ I am Doubao, an AI developed by ByteDance. I can answer various questions and co
 Connection to xuchunyang.cn closed.
 ```
 
+## 下载
+
+访问 https://xuchunyang.cn/llm 下载可执行文件，或者使用下面的命令下载：
+
+```bash
+$ wget https://xuchunyang.cn/llm
+$ chmod +x llm
+$ ./llm
+```
+
 ## 配置
 
 请在 `~/.llm/config.php` 中配置 API 信息，可以用兼容 OpenAI API 的大模型，下面以豆包的为例：
