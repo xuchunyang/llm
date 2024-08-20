@@ -1,34 +1,59 @@
-<p align="center">
-    <img title="Laravel Zero" height="100" src="https://raw.githubusercontent.com/laravel-zero/docs/master/images/logo/laravel-zero-readme.png" alt="Laravel Zero Logo" />
-</p>
+# 试用 Laravel Zero 写个 LLM CLI 工具
 
-<p align="center">
-  <a href="https://github.com/laravel-zero/framework/actions"><img src="https://github.com/laravel-zero/laravel-zero/actions/workflows/tests.yml/badge.svg" alt="Build Status" /></a>
-  <a href="https://packagist.org/packages/laravel-zero/framework"><img src="https://img.shields.io/packagist/dt/laravel-zero/framework.svg" alt="Total Downloads" /></a>
-  <a href="https://packagist.org/packages/laravel-zero/framework"><img src="https://img.shields.io/packagist/v/laravel-zero/framework.svg?label=stable" alt="Latest Stable Version" /></a>
-  <a href="https://packagist.org/packages/laravel-zero/framework"><img src="https://img.shields.io/packagist/l/laravel-zero/framework.svg" alt="License" /></a>
-</p>
+Laravel Zero 提供了类似 Laravel 的框架，但是用于 CLI 工具的开发。这里试用 Laravel Zero 写一个 LLM（Large Language Model）的
+CLI 工具，用于调用豆包的大模型。
 
-Laravel Zero was created by [Nuno Maduro](https://github.com/nunomaduro) and [Owen Voke](https://github.com/owenvoke), and is a micro-framework that provides an elegant starting point for your console application. It is an **unofficial** and customized version of Laravel optimized for building command-line applications.
+## 使用
 
-- Built on top of the [Laravel](https://laravel.com) components.
-- Optional installation of Laravel [Eloquent](https://laravel-zero.com/docs/database/), Laravel [Logging](https://laravel-zero.com/docs/logging/) and many others.
-- Supports interactive [menus](https://laravel-zero.com/docs/build-interactive-menus/) and [desktop notifications](https://laravel-zero.com/docs/send-desktop-notifications/) on Linux, Windows & MacOS.
-- Ships with a [Scheduler](https://laravel-zero.com/docs/task-scheduling/) and  a [Standalone Compiler](https://laravel-zero.com/docs/build-a-standalone-application/).
-- Integration with [Collision](https://github.com/nunomaduro/collision) - Beautiful error reporting
+```bash
+➜  ~ ssh llm@xuchunyang.cn
 
-------
+   LLM  正在使用 API key: b79a39f7***, Base uri: ark.cn-beijing.volces.com/api/v3, Model: ep-20240820141803-2b9fb, 请在 ~/.llm/config.php 中修改配置
 
-## Documentation
 
-For full documentation, visit [laravel-zero.com](https://laravel-zero.com/).
+ ┌ 发消息 ──────────────────────────────────────────────────────┐
+ │ 你是？                                                       │
+ └──────────────────────────────────────────────────────────────┘
 
-## Support the development
-**Do you like this project? Support it by donating**
+我是豆包，是字节跳动公司开发的人工智能。我可以回答各种问题并与你交流，很高兴为你服务！
 
-- PayPal: [Donate](https://www.paypal.com/cgi-bin/webscr?cmd=_s-xclick&hosted_button_id=66BYDWAT92N6L)
-- Patreon: [Donate](https://www.patreon.com/nunomaduro)
+ ┌ 发消息 ──────────────────────────────────────────────────────┐
+ │ 用英文回答之前的问题                                         │
+ └──────────────────────────────────────────────────────────────┘
 
-## License
+I am Doubao, an AI developed by ByteDance. I can answer various questions and communicate with you. I am glad to serve you!
 
-Laravel Zero is an open-source software licensed under the MIT license.
+ ┌ 发消息 ──────────────────────────────────────────────────────┐
+ │                                                              │
+ └──────────────────────────────────────────────────────────────┘
+
+再见
+Connection to xuchunyang.cn closed.
+```
+
+## 配置
+
+请在 `~/.llm/config.php` 中配置 API 信息，可以用兼容 OpenAI API 的大模型，下面以豆包的为例：
+
+```php
+return [
+    'api_key' => 'xxx',
+    'base_uri' => 'ark.cn-beijing.volces.com/api/v3',
+    'model' => 'ep-20240820141803-2b9fb',
+];
+```
+
+## 打包
+
+Laravel Zero 提供了打包工具，可以将 CLI 工具打包成一个可执行文件，这样部署和使用都会更加方便。
+
+```shell
+php llm app:build -vvv
+```
+
+## 用到的包
+
+- Laravel Zero, 类似的 Laravel 的 CLI 框架
+- OpenAI PHP，用于调用兼容 OpenAI API 的大模型
+- Laravel Prompt，用于交互式命令行
+- Termwind, 在命令行中使用 Tailwind CSS
