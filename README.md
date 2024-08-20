@@ -54,6 +54,6 @@ php llm app:build -vvv
 ## 用到的包
 
 - Laravel Zero, 类似的 Laravel 的 CLI 框架
-- OpenAI PHP，用于调用兼容 OpenAI API 的大模型
+- OpenAI PHP，用于调用兼容 OpenAI API 的大模型，支持流式
 - Laravel Prompt，用于交互式命令行
 - Termwind, 在命令行中使用 Tailwind CSS
